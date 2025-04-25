@@ -6,10 +6,8 @@
     
     <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
 
-    {{-- Фонове зображення --}}
     <div class="background-image"></div>
 
-    {{-- Основний блок --}}
     <div class="container py-5 position-relative">
         <div class="hero-section row align-items-center">
             <div class="col-md-6 mb-4 mb-md-0">
@@ -19,15 +17,21 @@
                     Відстежуйте дедлайни, статуси і пріоритети – все в одному місці.
                 </p>
 
-                <div class="d-flex gap-3 mt-4">
-                    <a href="{{ route('login') }}" class="btn btn-primary">Увійти</a>
-                    <a href="{{ route('register') }}" class="btn btn-outline-primary">Зареєструватися</a>
-                </div>
+                @if (Auth::check())
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="{{ route('dashboard') }}" class="btn btn-primary">Перейти до кабінету</a>
+                    </div>
+                @else
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="{{ route('login') }}" class="btn btn-primary">Увійти</a>
+                        <a href="{{ route('register') }}" class="btn btn-outline-primary">Зареєструватися</a>
+                    </div>
+                @endif
             </div>
 
-            {{-- Права колонка з ілюстрацією --}}
+
             <div class="col-md-6 text-center">
-                <img src="https://media.istockphoto.com/id/1370888403/it/foto/designer-uomini-che-puntano-la-pianificazione-delle-note-stilizzate-sviluppare-applicazioni.jpg?s=612x612&w=0&k=20&c=XH62GmfLinRIo2BSrmRAjzWTEZDHF5dqf3CbiaCrJ4Q="
+                <img src="https://media.istockphoto.com/id/1370888403/it/foto/designer-uomini-che-puntano-la-pianificazione-delle-note-stilizzate-sviluppare-applicazioni.jpg?s=612x612&w=0&k=20&c=XH62GmfLinRIo2BSrmRAjzWTEZDHF5dqf3CbiaCrJ4Q=" 
                      alt="Task Manager" class="img-preview">
             </div>
         </div>
